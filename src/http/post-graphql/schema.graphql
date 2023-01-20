@@ -1,0 +1,47 @@
+scalar Date
+scalar DateTime
+scalar EmailAddress
+
+type AuthPayload {
+  token: String
+  user: User
+}
+
+type Mutation {
+  createUser(input: CreateUserInput!): AuthPayload
+  login(username: String!, password: String!): AuthPayload
+  deleteUser(key: ID!): User
+  updateUser(input: UpdateUserInput!): User
+}
+
+type Query {
+  me: User
+  user(key: ID!): User
+  userCount: Int
+  users: [User]
+}
+
+type User {
+  key: ID
+  username: String!
+  email: EmailAddress
+  isVerified: Boolean
+  name: String
+  isAdmin: Boolean!
+}
+
+input CreateUserInput {
+  username: String!
+  password: String!
+  email: EmailAddress
+  name: String
+  isAdmin: Boolean
+}
+
+input UpdateUserInput {
+  key: ID!
+  username: String
+  email: EmailAddress
+  name: String
+  isAdmin: Boolean
+}
