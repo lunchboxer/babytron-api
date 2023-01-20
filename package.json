@@ -9,6 +9,39 @@
   "engines": {
     "node": "16"
   },
+  "arc": {
+    "app": "babytron-api",
+    "static": {
+      "folder": "./public",
+      "prune": true
+    },
+    "shared": {
+      "src": "./shared"
+    },
+    "http": [
+      {
+        "/graphql": {
+          "method": "post",
+          "src": "/graphql"
+        }
+      },
+      {
+        "/graphql": {
+          "method": "options",
+          "src": "/options"
+        }
+      }
+    ],
+    "tables": [
+      {
+        "data": {
+          "scopeID": "*String",
+          "dataID": "**String",
+          "ttl": "TTL"
+        }
+      }
+    ]
+  },
   "scripts": {
     "lint": "eslint src --fix",
     "start": "NODE_ENV=testing ARC_LOCAL=1 npx sandbox"
