@@ -1,8 +1,8 @@
-import { get, set, destroy, count } from '@begin/data'
-import { scryptSync, randomBytes } from 'node:crypto'
-import { createSigner } from 'fast-jwt'
+const { get, set, destroy, count } = require('@begin/data')
+const { scryptSync, randomBytes } = require('node:crypto')
+const { createSigner } = require('fast-jwt')
 
-import { GraphQLError } from 'graphql'
+const { GraphQLError } = require('graphql')
 
 const sign = createSigner({ key: process.env.JWT_SECRET })
 
@@ -37,7 +37,7 @@ function passwordMatches(password, hash) {
   return originalPassHash === currentPassHash
 }
 
-export const user = {
+module.exports.user = {
   createUser: async (_, { input }, context) => {
     const { password, ...parameters } = input
     if (parameters.email) await forceUniqueEmail(parameters.email)

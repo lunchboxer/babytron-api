@@ -1,9 +1,9 @@
-import { GraphQLError } from 'graphql'
+const { GraphQLError } = require('graphql')
 
 const development = process.env.ARC_ENV === 'testing'
 
 // Middle-ware to reveal expected errors and hide the rest
-export const handleErrors = async (
+module.exports.handleErrors = async (
   resolve,
   root,
   parameters,

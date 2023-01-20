@@ -1,7 +1,7 @@
-import arc from '@architect/functions'
-import { checkOrigin } from '@architect/shared'
-import { graphqlHandler } from './graphql-handler.js'
-import { getUser } from './utils.js'
+const arc = require('@architect/functions')
+const { checkOrigin } = require('@architect/shared')
+const { graphqlHandler } = require('./graphql-handler.js')
+const { getUser } = require('./utils.js')
 
 // This is for CORS
 // In this case the request body is a simple json string
@@ -34,4 +34,4 @@ const preHandler = async ({ body, headers }) => {
   }
 }
 
-export const handler = arc.http.async(preHandler)
+module.exports.handler = arc.http.async(preHandler)

@@ -1,15 +1,13 @@
-import { applyMiddleware } from 'graphql-middleware'
-import { makeExecutableSchema } from '@graphql-tools/schema'
-import { parse, validate, execute, GraphQLError } from 'graphql'
-import { resolvers } from './resolvers/index.js'
-import { permissions } from './permissions.js'
-import { readFileSync } from 'node:fs'
-import { lru } from 'tiny-lru'
-import { handleErrors } from './error-handler.js'
+const { applyMiddleware } = require('graphql-middleware')
+const { makeExecutableSchema } = require('@graphql-tools/schema')
+const { parse, validate, execute, GraphQLError } = require('graphql')
+const { resolvers } = require('./resolvers/index.js')
+const { permissions } = require('./permissions.js')
+const { readFileSync } = require('node:fs')
+const { lru } = require('tiny-lru')
+const { handleErrors } = require('./error-handler.js')
 
-const typeDefs = [
-  readFileSync(new URL('schema.graphql', import.meta.url), 'utf8').toString(),
-]
+const typeDefs = readFileSync('./schema.graphql', 'utf8').toString()
 const cache = lru(1000, 60 * 60 * 1000)
 
 const schema = makeExecutableSchema({ typeDefs, resolvers })
@@ -20,7 +18,7 @@ const schemaWithPermissions = applyMiddleware(
   handleErrors,
 )
 
-export async function graphqlHandler(query, variables, user) {
+module.exports.graphqlHandler = async function (query, variables, user) {
   if (!query) return new GraphQLError('No query was provided')
   const cacheKey = query || ''
   const cached = cache.get(cacheKey)

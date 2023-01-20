@@ -1,9 +1,9 @@
-import { createVerifier } from 'fast-jwt'
-import { get } from '@begin/data'
+const { createVerifier } = require('fast-jwt')
+const { get } = require('@begin/data')
 
 const verify = createVerifier({ key: process.env.JWT_SECRET })
 
-export const getUser = async headers => {
+const getUser = async headers => {
   const { authorization } = headers
   if (authorization) {
     const token = authorization.replace('Bearer ', '')
@@ -17,10 +17,15 @@ export const getUser = async headers => {
   }
 }
 
-export const isValidEmail = email => {
+const isValidEmail = email => {
   // A technically accurate regex for email validation would be incredibly long.
   // Instead we just want to check if the string is probably an email address to
   // catch a few common typing errors. Real validation uses verification emails.
   const mailFormatRegex = /^\S+@\S+\.\S+$/
   return email.match(mailFormatRegex)
+}
+
+module.exports = {
+  getUser,
+  isValidEmail,
 }

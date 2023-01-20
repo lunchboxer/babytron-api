@@ -1,12 +1,12 @@
-import {
+const {
   DateResolver,
   DateTimeResolver,
   EmailAddressResolver,
-} from 'graphql-scalars'
-import { Query } from './query.js'
-import { Mutation } from './mutation/index.js'
+} = require('graphql-scalars')
+const { Query } = require('./query.js')
+const { Mutation } = require('./mutation/index.js')
 
-export const resolvers = {
+module.exports.resolvers = {
   Date: DateResolver,
   DateTime: DateTimeResolver,
   EmailAddress: EmailAddressResolver,

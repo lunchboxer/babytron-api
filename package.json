@@ -6,6 +6,9 @@
     "type": "git",
     "url": "https://github.com/lunchboxer/babytron-api"
   },
+  "engines": {
+    "node": "v14.20 || >=16.0.0"
+  },
   "arc": {
     "app": "babytron-api",
     "static": {
@@ -40,11 +43,11 @@
     ]
   },
   "scripts": {
+    "lint": "eslint src --fix",
     "start": "NODE_ENV=testing ARC_LOCAL=1 npx sandbox"
   },
-  "type": "module",
   "devDependencies": {
-    "@architect/sandbox": "^4.1.1",
+    "@architect/sandbox": "^5.4.1",
     "@graphql-eslint/eslint-plugin": "^3.14.3",
     "eslint": "^8.32.0",
     "eslint-config-standard": "^17.0.0",
@@ -52,7 +55,6 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-security": "^1.6.0",
-    "eslint-plugin-standard": "^5.0.0",
     "eslint-plugin-unicorn": "^45.0.2",
     "prettier": "^2.8.3"
   }

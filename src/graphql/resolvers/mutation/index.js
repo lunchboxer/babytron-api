@@ -1,5 +1,5 @@
-import { user } from './user.js'
+const { user } = require('./user.js')
 
-export const Mutation = {
+module.exports.Mutation = {
   ...user,
 }

@@ -1,5 +1,5 @@
-import { shield, rule, or } from 'graphql-shield'
-import { count } from '@begin/data'
+const { shield, rule, or } = require('graphql-shield')
+const { count } = require('@begin/data')
 
 const isAuthenticated = rule()(async (_, parameters, context) => {
   return !!context.user || new Error('Only authenticated users may access')
@@ -19,7 +19,7 @@ const noUsersExist = rule()(async (_, parameters, context) => {
   return !userCount || new Error('First admin user already created')
 })
 
-export const permissions = shield(
+module.exports.permissions = shield(
   {
     Query: {
       me: isAuthenticated,
@@ -29,7 +29,7 @@ export const permissions = shield(
     Mutation: {
       createUser: or(noUsersExist, isAdmin),
       // deleteUser: isAdmin,
-      // updateUser: or(isThisUser, isAdmin),
+      updateUser: or(isThisUser, isAdmin),
       // changePassword: or(isThisUser, isAdmin),
     },
   },

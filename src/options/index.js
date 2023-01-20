@@ -1,7 +1,7 @@
-import { checkOrigin } from '@architect/shared'
+const { checkOrigin } = require('@architect/shared/check-origin.js')
 
 // This is a funny way to support CORS pre-flight requests
-export const handler = async request => {
+module.exports.handler = async request => {
   // compare to allowed origins, if it exists, then return origin, if not - return false
   const origin = checkOrigin(request.headers.origin)
   if (origin === false) {

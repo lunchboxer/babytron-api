@@ -1,7 +1,7 @@
-import { count, get } from '@begin/data'
-import { GraphQLError } from 'graphql'
+const { count, get } = require('@begin/data')
+const { GraphQLError } = require('graphql')
 
-export const Query = {
+module.exports.Query = {
   userCount: async () => {
     return await count({ table: 'users' })
   },
