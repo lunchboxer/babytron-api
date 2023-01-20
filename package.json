@@ -12,20 +12,23 @@
   "arc": {
     "app": "babytron-api",
     "static": {
-      "folder": "./public",
+      "folder": "/public",
       "prune": true
+    },
+    "shared": {
+      "src": "src/shared"
     },
     "http": [
       {
         "/graphql": {
           "method": "post",
-          "src": "/graphql"
+          "src": "/src/graphql"
         }
       },
       {
         "/graphql": {
           "method": "options",
-          "src": "/options"
+          "src": "/src/options"
         }
       }
     ],
