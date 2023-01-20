@@ -43,6 +43,7 @@
     ]
   },
   "scripts": {
+    "build": "node check-version.js",
     "start": "NODE_ENV=testing ARC_LOCAL=1 npx sandbox"
   },
   "devDependencies": {

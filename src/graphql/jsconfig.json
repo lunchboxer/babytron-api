@@ -1,9 +1,0 @@
-{
-  "compilerOptions": {
-    "target": "es2018",
-    "allowSyntheticDefaultImports": true,
-    "noEmit": true,
-    "checkJs": true,
-    "lib": ["es2018"]
-  }
-}
