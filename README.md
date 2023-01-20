@@ -1,6 +1,6 @@
-# Junior Adventurers
+# Babytron
 
-A graphql api for a single 2nd grade class
+A graphql api for baby data
 
 Basic set up requires the following environment variables be set:
 
