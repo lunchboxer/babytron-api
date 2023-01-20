@@ -44,7 +44,7 @@
     "start": "NODE_ENV=testing ARC_LOCAL=1 npx sandbox"
   },
   "devDependencies": {
-    "@architect/sandbox": "^5.0",
+    "@architect/sandbox": "^4.1.1",
     "@graphql-eslint/eslint-plugin": "^3.14.3",
     "eslint": "^8.32.0",
     "eslint-config-standard": "^17.0.0",
