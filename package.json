@@ -11,6 +11,9 @@
   },
   "arc": {
     "app": "babytron-api",
+    "aws": {
+      "runtime": "nodejs16.x"
+    },
     "static": {
       "folder": "/public",
       "prune": true
